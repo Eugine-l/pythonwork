@@ -1,37 +1,64 @@
 # Super Class 'Employee'
+import math
+
+
 class Employee:
-    def _init_(self,id,name):
-        self.id=id
-        self.name=name
+    def __init__(self, identity, name):
+        self.identity = identity
+        self.name = name
+
 
 # Class 'HourlyEmployee' inherits from 'Employee'
 class HourlyEmployee(Employee):
-    def _int_(self,id,name,hourly_pay,hours_worked):
-        self.hours_worked=hours_worked
-        self.hourly_pay=hourly_pay
-        super(). _init_(id,name)
-    def calculatepayroll(self,hours_worked,hourly_pay):
-        return hours_worked*hourly_pay
+    def __int__(self, identity, name, hourly_pay, hours_worked):
+        super().__init__(identity, name)
+        self.hours_worked = hours_worked
+        self.hourly_pay = hourly_pay
+
+    def hour(self):
+        hourly_pay = self, self.hours_worked * self.hours_worked
+        print("Hourly Salary")
+        print("ID No.", self.identity)
+        print("Name", self.name)
+        print("Hourly salary is:", hourly_pay)
+        return
+
 
 # Class 'SalaryEmployee' from 'Employee'
 class SalaryEmployee(Employee):
-     def _int_(self,basic_salary,allowance):
-         self.basic_salary=basic_salary
-         self.allowance=allowance
-         super()._init_(id,name)
-    def employeesalary(self,basic_salary,allowance)
-        return basic_salary*allowance
+    def __int__(self, identity, name, basic_salary, allowance):
+        super().__init__(identity, name)
+        self.basic_salary = basic_salary
+        self.allowance = allowance
+
+    def calculate_payroll(self):
+        pay = self.basic_salary + self.allowance
+        print(self.name)
+        print(self.identity)
+        print(pay)
+        return
+
 
 # Class 'CommissionEmployee' inherits from 'SalaryEmployee'
-class CommissionEmployee(Salary_Employee):
-    def _init_(self,commission_per_sale,number_of_sales):
-        self.commission_per_sale=commision_per_sale
-        self.number_of_sales=number_of_sales
-        super()._init_(id,name,allowance,basic_salary)
-    def employeecommission(self,commission_per_sales,number_of_sales):
-        return commission_per_sales*number_of_sales
+class CommissionEmployee(SalaryEmployee):
+    def __init__(self, identity, name, basic_salary, commission_per_sale, allowance):
+        super().__init__(identity, name, basic_salary, allowance)
+        self.commission_per_sale = commission_per_sale
+
+    def calculate_payroll(self):
+        commission = (self.basic_salary + self.allowance)
+        print("Commission")
+        print("ID No.", self.identity)
+        print("Name", self.name)
+        print("Total commission is:", math.trunc(commission))
+        return
 
 
-
+employee = SalaryEmployee(3567, 'Gen', 2400, 1100)
+employee.calculate_payroll()
+hooray = HourlyEmployee(13840, 'Eugine', 2600, 700)
+hooray.hour()
+Commas = CommissionEmployee(3567, 'hei', 5400, 1200, 50)
+Commas.calculate_payroll()
 
 
